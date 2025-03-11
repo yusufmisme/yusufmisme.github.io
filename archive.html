@@ -23,29 +23,31 @@
         <!-- Desktop Navigation -->
         <nav class="desktop-nav">
           <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="archive.html" class="active">Archive</a>
+          <a href="about.html" class="active">About</a>
+          <a href="archive.html">Archive</a>
           <a href="outreach.html">Outreach</a>
           <a href="contact.html">Contact</a>
         </nav>
         
         <!-- Mobile Menu Button -->
-        <div class="mobile-menu-btn">
-          <button id="menuToggle" aria-label="Toggle menu">
-            <i class="lucide-menu"></i>
-          </button>
-        </div>
+        <button id="menuToggle" class="mobile-menu-btn" aria-label="Toggle menu">
+          <div class="waffle-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
       </div>
     </div>
     
     <!-- Mobile Navigation -->
-    <div class="mobile-nav" id="mobileNav">
+    <nav id="mobileNav" class="mobile-nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="archive.html" class="active">Archive</a>
+      <a href="about.html" class="active">About</a>
+      <a href="archive.html">Archive</a>
       <a href="outreach.html">Outreach</a>
       <a href="contact.html">Contact</a>
-    </div>
+    </nav>
   </header>
 
   <main>
@@ -309,7 +311,7 @@
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; <span id="currentYear"></span></p>
+        <p><span id="currentYear"></span></p>
       </div>
     </div>
   </footer>
