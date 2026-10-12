@@ -13,12 +13,58 @@
       background: #fff;
       color: #000;
       font-family: Arial, Helvetica, sans-serif;
+      font-size: 2em;
+    }
+    main {
+      text-align: center;
+    }
+    a {
+      color: #000;
+      font-family: inherit;
+      font-size: 1em;
+    }
+    .typing-text {
+      visibility: hidden;
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>yusufmisme.github.io</h1>
+    <h1 class="typing-text">yusufmisme.github.io</h1>
+    <a href="https://yusufmisme.github.io/Guzzle/"><h2 class="typing-text">Guzzle</h2></a>
   </main>
+  <script>
+    const textToType = [...document.querySelectorAll(".typing-text")]
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      textToType.forEach((element) => { element.style.visibility = "visible" })
+    } else {
+      let elementIndex = 0
+
+      function typeNextElement() {
+        const element = textToType[elementIndex]
+        if (!element) return
+
+        const fullText = element.textContent
+        element.textContent = ""
+        element.style.visibility = "visible"
+        let characterIndex = 0
+
+        function typeCharacter() {
+          element.textContent = fullText.slice(0, ++characterIndex)
+          if (characterIndex < fullText.length) {
+            window.setTimeout(typeCharacter, 35)
+          } else {
+            elementIndex += 1
+            window.setTimeout(typeNextElement, 180)
+          }
+        }
+
+        typeCharacter()
+      }
+
+      typeNextElement()
+    }
+  </script>
 </body>
 </html>
