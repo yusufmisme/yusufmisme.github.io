@@ -26,44 +26,53 @@
     .typing-text {
       visibility: hidden;
     }
+    .fade-in-item {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .fade-in-item.is-visible {
+      animation: fade-up 350ms ease forwards;
+    }
+    @keyframes fade-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in-item { opacity: 1; transform: none; }
+      .fade-in-item.is-visible { animation: none; }
+    }
   </style>
 </head>
 <body>
   <main>
     <h1 class="typing-text">yusufmisme.github.io</h1>
-    <a href="https://yusufmisme.github.io/Guzzle/"><h2 class="typing-text">Guzzle</h2></a>
+    <a class="fade-in-item" href="https://yusufmisme.github.io/Guzzle/"><h2>Guzzle</h2></a>
+    <!--<a class="fade-in-item" href="https://yusufmisme.github.io/Guzzle/"><h2>Test</h2></a>-->
   </main>
   <script>
-    const textToType = [...document.querySelectorAll(".typing-text")]
+    const title = document.querySelector("h1.typing-text")
+    const links = [...document.querySelectorAll("main > a.fade-in-item")]
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      textToType.forEach((element) => { element.style.visibility = "visible" })
+      title.style.visibility = "visible"
+      links.forEach((link) => link.classList.add("is-visible"))
     } else {
-      let elementIndex = 0
+      const fullTitle = title.textContent
+      title.textContent = ""
+      title.style.visibility = "visible"
+      let characterIndex = 0
 
-      function typeNextElement() {
-        const element = textToType[elementIndex]
-        if (!element) return
-
-        const fullText = element.textContent
-        element.textContent = ""
-        element.style.visibility = "visible"
-        let characterIndex = 0
-
-        function typeCharacter() {
-          element.textContent = fullText.slice(0, ++characterIndex)
-          if (characterIndex < fullText.length) {
-            window.setTimeout(typeCharacter, 35)
-          } else {
-            elementIndex += 1
-            window.setTimeout(typeNextElement, 180)
-          }
+      function typeCharacter() {
+        title.textContent = fullTitle.slice(0, ++characterIndex)
+        if (characterIndex < fullTitle.length) {
+          window.setTimeout(typeCharacter, 35)
+        } else {
+          links.forEach((link, index) => {
+            window.setTimeout(() => link.classList.add("is-visible"), index * 220)
+          })
         }
-
-        typeCharacter()
       }
 
-      typeNextElement()
+      typeCharacter()
     }
   </script>
 </body>
