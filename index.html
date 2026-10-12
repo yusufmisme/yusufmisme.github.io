@@ -5,24 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>yusufmisme.github.io</title>
   <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
     body {
       display: grid;
       min-height: 100vh;
+      min-height: 100svh;
       margin: 0;
       place-items: center;
       background: #fff;
       color: #000;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 2em;
+      font-size: 2rem;
+      padding: 1.5rem;
     }
     main {
       text-align: center;
+      width: min(100%, 48rem);
+    }
+    h1 {
+      font-size: clamp(1.8rem, 8vw, 4rem);
+      line-height: 1.1;
+      overflow-wrap: anywhere;
+      margin: 0 0 1.25rem;
+    }
+    h2 {
+      font-size: clamp(1.4rem, 6vw, 2.5rem);
+      margin: 0 0 0.9rem;
     }
     a {
       color: #000;
       font-family: inherit;
-      font-size: 1em;
+      font-size: clamp(1rem, 4vw, 1.5rem);
     }
+    main > a { display: block; }
     .typing-text {
       visibility: hidden;
     }
@@ -40,12 +59,19 @@
       .fade-in-item { opacity: 1; transform: none; }
       .fade-in-item.is-visible { animation: none; }
     }
+    @media (max-width: 360px) {
+      body { padding: 1rem; }
+      h1 { font-size: clamp(1.5rem, 8vw, 1.8rem); }
+    }
   </style>
 </head>
 <body>
   <main>
     <h1 class="typing-text">yusufmisme.github.io</h1>
     <a class="fade-in-item" href="https://yusufmisme.github.io/Guzzle/"><h2>Guzzle</h2></a>
+    <a class="fade-in-item" href="https://www.5189wolvesrobotics.com/"><h2>Wolves Robotics</h2></a>
+    <a class="fade-in-item" href="https://sites.google.com/view/sstmualphatheta/home"><h2>SST Mu Alpha Theta</h2></a>
+    <a class="fade-in-item" href="https://github.com/yusufmisme"><h2>GitHub Profile</h2></a>
     <!--<a class="fade-in-item" href="https://yusufmisme.github.io/Guzzle/"><h2>Test</h2></a>-->
   </main>
   <script>
